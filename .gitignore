@@ -1,0 +1,65 @@
+# Documentation (local development only)
+docs/
+
+# Environment variables
+.env
+.env.local
+*.pem
+*.key
+
+# API Keys and Secrets
+config*.yaml
+!config_template.yaml
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Results and checkpoints (keep only original/template files)
+**/results/*.json
+!**/results/mark.md
+**/checkpoints/*.json
+
+# Large data files
+*.pkl
+*.pickle
+*.h5
+*.hdf5
+
+# Logs
+*.log
+logs/

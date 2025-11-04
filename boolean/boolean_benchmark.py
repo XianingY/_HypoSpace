@@ -973,15 +973,9 @@ def main():
         sys.exit(1)
     dataset_name = Path(args.dataset).stem
     model_name = Path(model).stem if model else llm_type
-    output_pattern = config.get('benchmark', {}).get('output_pattern', 'results_{dataset_name}_{model}.json')
-    output = output_pattern.format(dataset_name=dataset_name, model=model_name, llm_type=llm_type)
-
-    # Generate output filename if not specified
-    if output is None:
-        dataset_name = Path(args.dataset).stem
-        model_name = Path(model).stem if model else llm_type
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-        output = f"results/{dataset_name}_{model_name}_{timestamp}.json"
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    output_pattern = config.get('benchmark', {}).get('output_pattern', 'results/{dataset_name}_{model}_{timestamp}.json')
+    output = output_pattern.format(dataset_name=dataset_name, model=model_name, timestamp=timestamp)
 
     # Initialize benchmark
     benchmark = BooleanBenchmarkRefined(args.dataset)

@@ -984,8 +984,9 @@ def main():
     if args.output is None:
         dataset_name = Path(args.dataset).stem
         model_name = Path(model).stem if model else llm_type
-        output_pattern = config.get('benchmark', {}).get("output_pattern", "results/{dataset_name}_{model}.json")
-        output = output_pattern.format(dataset_name=dataset_name,model=model_name)
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+        output_pattern = config.get('benchmark', {}).get("output_pattern", "results/{dataset_name}_{model}_{timestamp}.json")
+        output = output_pattern.format(dataset_name=dataset_name, model=model_name, timestamp=timestamp)
     else:
         output = args.output
     
